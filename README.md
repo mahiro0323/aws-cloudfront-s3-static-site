@@ -4,6 +4,15 @@ Amazon S3に配置した静的コンテンツをAmazon CloudFrontから配信し
 
 S3へ直接アクセスする場合とCloudFrontを経由する場合の違いを確認し、DNS、証明書、CDN、オリジンの関係を整理しました。
 
+## Terraformでの再構築
+
+手作業で確認した構成をコードでも再現できるよう、[Terraformコード](terraform/)を追加しました。今回はCloudFrontの標準ドメインでHTTPS配信する最小構成です。独自ドメイン、Route 53、ACMはこのコードの作成対象に含めていません。
+
+S3のパブリックアクセスをブロックし、OACで対象のCloudFrontからだけオブジェクトを取得できるようにしています。過去の手作業の記録と、今回コードにした構成は分けて記載しています。
+
+- [Terraformの実行・更新・削除手順](docs/terraform-guide.md)
+- [今回の作業状況](docs/terraform-status.md)
+
 ## 構成
 
 ![CloudFrontとS3による静的Web配信構成](docs/aws-cloudfront-s3-architecture.png)
